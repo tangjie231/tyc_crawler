@@ -51,14 +51,14 @@ public class TycPageProcessor implements PageProcessor {
 
     @Override
     public void process(Page page) {
-        System.out.println(page);
+        System.out.println(page.getRawText());
         Html html = page.getHtml();
         String companyName = html.xpath("//a[@tyc-event-ch=\"CompanySearch.Company\"]").nodes().get(0).xpath("//a/text()").get();
         List<Selectable> nodes = html.$(".result-list").$(".info").xpath("/div/div").nodes();
         if(nodes != null && !nodes.isEmpty()) {
             String legalPersonName = nodes.get(0).xpath("//a/text()").get();
-            String regCapital = nodes.get(1).xpath("//a/text()").get();
-            String regTime = nodes.get(2).xpath("//a/text()").get();
+            String regCapital = nodes.get(1).xpath("//span/text()").get();
+            String regTime = nodes.get(2).xpath("//span/text()").get();
 
             page.putField("companyName",companyName);
             page.putField("legalPersonName",legalPersonName);
