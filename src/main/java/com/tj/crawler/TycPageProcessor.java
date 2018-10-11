@@ -1,5 +1,7 @@
 package com.tj.crawler;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -13,6 +15,7 @@ import java.util.concurrent.TimeUnit;
  * @Desc:
  */
 public class TycPageProcessor implements PageProcessor {
+    private static Logger logger = LoggerFactory.getLogger(TycPageProcessor.class);
 
     @Override
     public Site getSite() {
@@ -47,8 +50,9 @@ public class TycPageProcessor implements PageProcessor {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        System.out.println("begin");
-        TycPageProcessor tycPageProcessor = new TycPageProcessor();
-        Spider.create(tycPageProcessor).addUrl("https://www.qixin.com/search?key=58%E5%88%B0%E5%AE%B6").thread(1).run();
+        logger.info("begin");
+
+        /*TycPageProcessor tycPageProcessor = new TycPageProcessor();
+        Spider.create(tycPageProcessor).addUrl("https://www.qixin.com/search?key=58%E5%88%B0%E5%AE%B6").thread(1).run();*/
     }
 }
